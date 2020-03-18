@@ -13,13 +13,11 @@ namespace TimeSheetParser
         
         internal static void Main()
         {
-            using var file = File.OpenRead("C:\\Users\\Matthew\\Desktop\\timesheet-feb.txt");
-            
-            using var textReader = new StreamReader(file);
-            
-            Go(textReader, Console.Out);
+            // using var file = File.OpenRead(@"C:\Users\Matthew\Dropbox\TripStack\Timesheets\timesheet-mar.txt");
+            // using var textReader = new StreamReader(file);
+            // Go(textReader, Console.Out);
 
-            //Go(Console.In, Console.Out);
+            Go(Console.In, Console.Out);
         }
 
         private static void Go(TextReader stdin, TextWriter stdout)
@@ -72,6 +70,11 @@ namespace TimeSheetParser
                 var nextItem = timeLineItems[i + 1];
 
                 var timeSpent = nextItem.TimeOfDay - currentItem.TimeOfDay;
+                
+                if (timeSpent < TimeSpan.Zero)
+                {
+                    timeSpent += TimeSpan.FromDays(1);
+                }
 
                 if (workItems.TryGetValue(currentItem.Key, out var workItem))
                 {
