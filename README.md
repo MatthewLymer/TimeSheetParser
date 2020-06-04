@@ -26,3 +26,24 @@ JUNE 2
 ## Usage
 
 `cat timesheet.txt | TimeSheetParser.exe`
+
+## Example output
+
+```
+JUNE 1
+0.25 STAND UP
+2.92 EE-123 - Fix widget
+0.83 LUNCH
+4.53 EE-456 - Implement feature foobar
+Total Time: 8h 32m
+
+JUNE 2
+0.33 STAND UP
+0.58 GROOMING MEETINGS
+1.38 FILLING OUT TIME SHEET
+0.85 BACKLOG REFINEMENT
+1.18 LUNCH
+3.30 EE-456 - Implement feature foobar
+0.93 TOWNHALL
+Total Time: 8h 34m
+```
