@@ -39,24 +39,31 @@ namespace TimeSheetParser
                 }
                 else
                 {
-                    var items = GetCanonicalWorkItems(timeLineItems);
+                    WriteSummary(stdout, timeLineItems);
                     
-                    timeLineItems.Clear();
-
-                    if (items.Count > 0)
-                    {
-                        foreach (var item in items)
-                        {
-                            stdout.WriteLine($"{item.TimeSpent.TotalHours:F2} {item.Description}");
-                        }
-
-                        var total = items.Select(x => x.TimeSpent).Aggregate(TimeSpan.Zero, (x, y) => x + y);
-                        
-                        stdout.WriteLine($"Total Time: {total.Hours}h {total.Minutes}m");
-                    }
-
                     stdout.WriteLine(line);
                 }
+            }
+            
+            WriteSummary(stdout, timeLineItems);
+        }
+
+        private static void WriteSummary(TextWriter stdout, List<TimeLineItem> timeLineItems)
+        {
+            var items = GetCanonicalWorkItems(timeLineItems);
+
+            timeLineItems.Clear();
+
+            if (items.Count > 0)
+            {
+                foreach (var item in items)
+                {
+                    stdout.WriteLine($"{item.TimeSpent.TotalHours:F2} {item.Description}");
+                }
+
+                var total = items.Select(x => x.TimeSpent).Aggregate(TimeSpan.Zero, (x, y) => x + y);
+
+                stdout.WriteLine($"Total Time: {total.Hours}h {total.Minutes}m");
             }
         }
 
