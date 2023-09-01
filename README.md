@@ -47,3 +47,17 @@ JUNE 2
 0.93 TOWNHALL
 Total Time: 8h 34m
 ```
+
+## Building
+
+Windows
+
+```sh
+docker run -it --rm -v $(pwd):/code mcr.microsoft.com/dotnet/sdk:3.1 dotnet publish /code/src/TimeSheetParser/TimeSheetParser.csproj --configuration=Release --self-contained true /p:PublishReadyToRun=false --runtime win-x64 /p:PublishDir=/code/artifacts/win-x64
+```
+
+MacOS
+
+```sh
+docker run -it --rm -v $(pwd):/code mcr.microsoft.com/dotnet/sdk:3.1 dotnet publish /code/src/TimeSheetParser/TimeSheetParser.csproj --configuration=Release --self-contained true /p:PublishReadyToRun=false --runtime osx-x64 /p:PublishDir=/code/artifacts/osx-x64
+```

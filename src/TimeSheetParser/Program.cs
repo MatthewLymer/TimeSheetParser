@@ -9,7 +9,7 @@ namespace TimeSheetParser
     internal static class Program
     {
         private static readonly Regex TimeLineRegex = new Regex("([0-9]{4,})\\s+(.*)");
-        private static readonly Regex TicketRegex = new Regex("([A-Z][A-Z0-9]{1,3}-[1-9][0-9]*)\\s+(.*)");
+        private static readonly Regex TicketRegex = new Regex("([A-Z][A-Z0-9]+-[1-9][0-9]*)\\s+(.*)");
         
         internal static void Main()
         {
@@ -48,11 +48,9 @@ namespace TimeSheetParser
             WriteSummary(stdout, timeLineItems);
         }
 
-        private static void WriteSummary(TextWriter stdout, List<TimeLineItem> timeLineItems)
+        private static void WriteSummary(TextWriter stdout, IReadOnlyList<TimeLineItem> timeLineItems)
         {
             var items = GetCanonicalWorkItems(timeLineItems);
-
-            timeLineItems.Clear();
 
             if (items.Count > 0)
             {
