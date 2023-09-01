@@ -25,7 +25,6 @@ namespace TimeSheetParser
             var timeLineItems = new List<TimeLineItem>();
             
             string line;
-
             while ((line = stdin.ReadLine()) != null)
             {
                 var timeLineMatch = TimeLineRegex.Match(line);
@@ -40,7 +39,7 @@ namespace TimeSheetParser
                 else
                 {
                     WriteSummary(stdout, timeLineItems);
-                    
+                    timeLineItems.Clear();
                     stdout.WriteLine(line);
                 }
             }

@@ -3,7 +3,7 @@ Parses custom made timesheet files
 
 ## Example timesheet.txt file format
 
-```
+```text
 JUNE 1
 0900 STAND UP
 0915 EE-123 - Fix widget
@@ -29,7 +29,7 @@ JUNE 2
 
 ## Example output
 
-```
+```text
 JUNE 1
 0.25 STAND UP
 2.92 EE-123 - Fix widget
